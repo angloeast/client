@@ -4,13 +4,13 @@ import { HiMenuAlt2 } from 'react-icons/hi';
 
 const Header = () => {
   return (
-    <header className='shadow md:shadow-none'>
-      <nav className='flex items-center justify-between p-3 md:p-6 '>
-        <div className='flex items-center gap-8'>
-          <div className='inline-block sm:hidden'>
+    <header className="shadow md:shadow-none">
+      <nav className="flex items-center justify-between p-3 md:p-6 ">
+        <div className="flex items-center gap-8">
+          <div className="inline-block sm:hidden">
             <HiMenuAlt2 size={28} />
           </div>
-          <div className='font-bold text-xl'>Issues</div>
+          <div className="font-bold text-xl">Issues</div>
         </div>
         <div>
           <ul>
