@@ -1,6 +1,7 @@
-import React from 'react';
-import ThemeSwitcher from './ThemeSwitcher';
-import { HiMenuAlt2 } from 'react-icons/hi';
+import React from "react";
+import ThemeSwitcher from "./ThemeSwitcher";
+import { HiMenuAlt2 } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,7 +11,9 @@ const Header = () => {
           <div className="inline-block sm:hidden">
             <HiMenuAlt2 size={28} />
           </div>
-          <div className="font-bold text-xl">Issues</div>
+          <div className="font-bold text-xl">
+            <Link to="/">Issues</Link>
+          </div>
         </div>
         <div>
           <ul>

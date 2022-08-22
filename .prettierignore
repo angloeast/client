@@ -1,5 +1,7 @@
 node_modules/
 
+*.spec.jsx
 *.spec.tsx
+*.spec.jsx.snap
 *.spec.tsx.snap
 src/generated/

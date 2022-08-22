@@ -1,29 +1,17 @@
-import React from 'react';
-import { getIssues } from './../services/api';
-import { useQuery } from '@tanstack/react-query';
-
-const formatDate = (date) => {
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'June',
-    'July',
-    'Aug',
-    'Sept',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  return `${months[date.getMonth()]} ${date.getFullYear()}`;
-};
+import React, { ReactComponentElement } from "react";
+import { getIssues } from "../services/api";
+import { useQuery } from "@tanstack/react-query";
+import { Issue } from "./../models/index";
+import { formatDate } from "../utils/textUtils";
 
 const Issues = () => {
-  const { data, isLoading } = useQuery(['issues'], getIssues);
+  const { data, isLoading, isError } = useQuery<Issue[] | undefined>(
+    ["issues"],
+    getIssues
+  );
   if (isLoading) return <div>Loading</div>;
-  console.log(data);
+
+  if (isError) return <div>Error Occured</div>;
   return (
     <div className="flex flex-wrap gap-x-2 gap-y-4 items-center m-8">
       {data.map((d) => {
@@ -38,7 +26,9 @@ const Issues = () => {
             </div>
             <div className="flex flex-col py-2">
               <div>
-                <span className="text-slate-900 font-bold dark:text-slate-300">Issue {d.issueNumber}</span>
+                <span className="text-slate-900 font-bold dark:text-slate-300">
+                  Issue {d.issueNumber}
+                </span>
               </div>
               <div className="flex gap-2 items-center">
                 <span className="text-slate-500">Issue {d.issueNumber}</span>
@@ -55,15 +45,16 @@ const Issues = () => {
   );
 };
 
-
 const IndexPage = () => {
   return (
     <div>
-      <div className="text-4xl m-8">Past Issues</div>
+      <div>
+        <div className="text-4xl m-8">Past Issues</div>
+        <div>Create Issue</div>
+      </div>
       <Issues />
     </div>
   );
 };
-
 
 export default IndexPage;
